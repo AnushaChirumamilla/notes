@@ -76,6 +76,7 @@ textarea:focus {
 .notepreview:empty:not(:focus):before {
   content: attr(data-placeholder)
 }
+
 header{
     background-color: lightyellow;
 }

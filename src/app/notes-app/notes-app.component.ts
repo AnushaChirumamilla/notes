@@ -55,6 +55,7 @@ export class NotesAppComponent implements OnInit {
       this.onselectednote(this.notedata, this.notedata.id)
     }
     else {
+      
       this.onselectednote(this.notedata, 0);
     }
 

@@ -12,6 +12,7 @@ export class OrderbyPipe implements PipeTransform {
       if (order === 'asc') { return value.sort() }
       else { return value.sort().reverse(); }
     } // sort 1d array
+    
     return orderBy(value, [column], [order]);
   }
 

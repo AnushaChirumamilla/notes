@@ -30,7 +30,7 @@
 </nav>
 
 <div class="row bg-light">
-  <div class="col-md-4 " style="overflow-y:scroll;border:0.5px solid grey;max-height:100vh">
+  <div class="col-md-4" style="overflow-y:scroll;border:0.5px solid grey;max-height:100vh">
     <div class="preview" *ngIf="shownewnote" style="padding:12px" appHighlight (click)="onselectednote(note)" [ngStyle]="{'background-color': this.newnotehighlight === true ? '#faeebf' : '' }">
       <div data-placeholder="New Note" class="notepreview">{{fname}}</div>
       <div class="notepreview"> {{today |date:'h:mm a'}}</div>

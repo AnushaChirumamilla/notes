@@ -73,24 +73,15 @@ export class NotesService {
   }
   getNotebysearch(content1: string) {
   console.log('notes',this.notes);
-    let cities = [
-      { name: 'Los Angeles', population: 3792621 },
-      { name: 'New York', population: 8175133 },
-      { name: 'Chicago', population: 2695598 },
-      { name: 'Houston', population: 2099451 },
-      { name: 'Philadelphia', population: 1526006 }
-    ];
+  
     let bigCities = this.notes.filter(function (e) {
       let str=e.content;
       if(str.includes(content1)){
       return e.content === content1;
       }
     });
-    let bigCities1 = cities.filter(function (e) {
-      return e.name === 'New';
-    });
-    console.log(bigCities);
-    console.log(bigCities1);
+  
+   
 return this.notes
   .filter(note => note.content === content1);
    
