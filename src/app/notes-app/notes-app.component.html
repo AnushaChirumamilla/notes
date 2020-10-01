@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light1">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <button class="nav-link" (click)="removeNote()">delete
+          <!-- <i class="fa fa-trash "></i> -->
+
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" (click)="newNoteadd()">add
+          <!-- <i class="fa fa-edit "></i>add -->
+        </button>
+      </li>
+
+    </ul>
+
+    <div class="form-inline my-2 my-lg-0">
+
+      <input type="search" class="form-control" placeholder="Search" [(ngModel)]="searchText">
+
+    </div>
+
+  </div>
+</nav>
+
+<div class="row bg-light">
+
+  <div class="col-md-4 " style="overflow-y:scroll;border:0.5px solid grey;max-height:100vh">
+    <div class="preview" *ngIf="shownewnote" style="padding:12px" appHighlight (click)="onselectednote(note)" [ngStyle]="{'background-color': this.newnotehighlight === true ? '#faeebf' : '' }">
+
+      <div data-placeholder="New Note" class="preview__content">{{fname}}</div>
+
+      <div class="preview__content"> {{today |date:'h:mm a'}}</div>
+    </div>
+
+    <ul class="noteul">
+      <!-- | orderby : 'desc':'id' -->
+      <li *ngFor="let note of notes | filter:searchText | orderby : 'desc':'id';let i=index " (click)="onselectednote(note,i)"
+        appHighlight [ngClass]="note.id === activenoteid ? 'active' : 'none'">
+        <div class="noteslist">
+
+
+          <p class=" item__content " appHighlight [searchedWord]="searchText " [content]="note.content
+          " [classToApply]=" 'font-weight-bold' " [setTitle]=" 'true' ">{{note.content}}</p>
+
+          <p>{{note.datetime | date:'h:mm a'}}</p>
+
+
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
+
+
+
+  <div class="col-md-8 bg-light ">
+
+    <textarea name="name " placeholder="New Note" [(ngModel)]="fname " type="text " (keyup)="onSubmit(noteForm.value) "></textarea>
+
+
+
+
+
+
+  </div>
+</div>
