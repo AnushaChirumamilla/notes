@@ -60,7 +60,7 @@ textarea {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
 }
-.preview__content{
+.notepreview{
     padding-inline-start: 50px;
     /* background-color: yellow; */
 }
@@ -73,7 +73,7 @@ textarea:focus {
     border:none !important;
     box-shadow: 0 0 10px #719ECE;
 }
-.preview__content:empty:not(:focus):before {
+.notepreview:empty:not(:focus):before {
   content: attr(data-placeholder)
 }
 header{

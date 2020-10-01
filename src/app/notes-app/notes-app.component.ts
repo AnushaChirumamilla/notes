@@ -12,7 +12,7 @@ import { OrderbyPipe } from '../orderby.pipe';
   templateUrl: './notes-app.component.html',
   styleUrls: ['./notes-app.component.css'],
   providers: [NotesService, OrderbyPipe],
- 
+
 })
 export class NotesAppComponent implements OnInit {
 
@@ -23,11 +23,11 @@ export class NotesAppComponent implements OnInit {
   onselectedanothernote: boolean = false;
   fname: string = 'New Note';
   newnotehighlight: boolean;
- 
+
   noteid: any;
 
   notedata: any;
-  
+
   shownewnote: boolean = false;
   newNote: Note = new Note();
   notes = [];
@@ -38,7 +38,7 @@ export class NotesAppComponent implements OnInit {
   today: number = Date.now();
   searchText = '';
 
-  constructor(private noteService: NotesService, private fb: FormBuilder, private elementRef: ElementRef,  public cdRef: ChangeDetectorRef) {
+  constructor(private noteService: NotesService, private fb: FormBuilder, private elementRef: ElementRef, public cdRef: ChangeDetectorRef) {
     this.createForm();
   }
 
@@ -50,7 +50,7 @@ export class NotesAppComponent implements OnInit {
     this.notes = this.noteService.getAllNotes();
     let i = this.notes.length;
     this.notedata = this.notes[i - 1];
-    if (this.deletenote) {
+    if (this.deletenote && this.noteindex != undefined) {
       this.notedata = this.notes[this.noteindex]
       this.onselectednote(this.notedata, this.notedata.id)
     }
@@ -94,7 +94,7 @@ export class NotesAppComponent implements OnInit {
     this.createForm();
     this.activenoteid = '';
     this.fname = ''
-   
+
     this.shownewnote = true;
 
     this.newNote = new Note;
@@ -142,10 +142,12 @@ export class NotesAppComponent implements OnInit {
   }
   removeNote() {
     this.onselectedanothernote = true;
-    this.noteindex = this.notes.findIndex(obj => obj.id == this.noteid);
-    this.noteindex = this.noteindex - 1;
+
+
     this.deletenote = true;
     if (this.noteid) {
+      this.noteindex = this.notes.findIndex(obj => obj.id == this.noteid);
+      this.noteindex = this.noteindex - 1;
       this.noteService.deleteNoteById(this.noteid);
     }
     else if (this.shownewnote)
